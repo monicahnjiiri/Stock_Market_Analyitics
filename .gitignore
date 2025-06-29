@@ -1,0 +1,45 @@
+# Environment variables
+.env
+
+# Virtual environment
+venv/
+env/
+ENV/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+etl_execution.log
+etl_pipeline.log
+
+# Generated output files (exclude from git)
+elasticsearch_stocks.json
+elasticsearch_profiles.json
+kibana_visualizations.png
+
+# Temporary files
+*.tmp
+*.temp
+
+# Duplicate files to exclude
+etl_pipeline.py
+simple_etl_with_alerts.py
+enhanced_etl_with_alerts.py
+ETL_Pipeline_Setup.md
+ETL_Schedule_Setup.md

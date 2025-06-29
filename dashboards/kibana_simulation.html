@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kibana Simulation - BI Project</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f5f5f5; }
+        .header { background-color: #1f2937; color: white; padding: 15px; margin-bottom: 20px; }
+        .dashboard { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .chart-container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .chart-title { font-size: 18px; font-weight: bold; margin-bottom: 15px; color: #333; }
+        .index-patterns { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        .pattern { background: #e5f3ff; padding: 10px; margin: 5px 0; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Kibana Dashboard - Stock Market BI Project</h1>
+        <p>Simulated Elasticsearch + Kibana Visualization</p>
+    </div>
+
+    <div class="index-patterns">
+        <h2>Index Patterns Created</h2>
+        <div class="pattern">stocks* - 6,275 stock records indexed</div>
+        <div class="pattern">profiles* - 5 company profiles indexed</div>
+    </div>
+
+    <div class="dashboard">
+        <div class="chart-container">
+            <div class="chart-title">Pie Chart: Sector Distribution</div>
+            <canvas id="sectorChart" width="400" height="300"></canvas>
+        </div>
+
+        <div class="chart-container">
+            <div class="chart-title">Bar Chart: Companies by Sector</div>
+            <canvas id="companyChart" width="400" height="300"></canvas>
+        </div>
+
+        <div class="chart-container">
+            <div class="chart-title">Line Chart: AAPL Stock Price Trend</div>
+            <canvas id="stockChart" width="400" height="300"></canvas>
+        </div>
+
+        <div class="chart-container">
+            <div class="chart-title">Market Cap Comparison</div>
+            <canvas id="marketCapChart" width="400" height="300"></canvas>
+        </div>
+    </div>
+
+    <script>
+        // Pie Chart: Sector Distribution
+        const sectorCtx = document.getElementById('sectorChart').getContext('2d');
+        new Chart(sectorCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Technology', 'Consumer Discretionary'],
+                datasets: [{
+                    data: [4, 1],
+                    backgroundColor: ['#3B82F6', '#EF4444']
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+
+        // Bar Chart: Companies by Sector
+        const companyCtx = document.getElementById('companyChart').getContext('2d');
+        new Chart(companyCtx, {
+            type: 'bar',
+            data: {
+                labels: ['AAPL', 'MSFT', 'GOOG', 'META', 'AMZN'],
+                datasets: [{
+                    label: 'Companies',
+                    data: [1, 1, 1, 1, 1],
+                    backgroundColor: ['#3B82F6', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6']
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: { y: { beginAtZero: true } }
+            }
+        });
+
+        // Line Chart: Stock Price Trend (Sample AAPL data)
+        const stockCtx = document.getElementById('stockChart').getContext('2d');
+        new Chart(stockCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'AAPL Stock Price',
+                    data: [180, 185, 190, 195, 200, 205],
+                    borderColor: '#3B82F6',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: { y: { beginAtZero: false } }
+            }
+        });
+
+        // Market Cap Chart
+        const marketCapCtx = document.getElementById('marketCapChart').getContext('2d');
+        new Chart(marketCapCtx, {
+            type: 'bar',
+            data: {
+                labels: ['AAPL', 'MSFT', 'GOOG', 'AMZN', 'META'],
+                datasets: [{
+                    label: 'Market Cap (Trillions)',
+                    data: [3.0, 2.8, 1.7, 1.5, 0.8],
+                    backgroundColor: ['#3B82F6', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6']
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: { y: { beginAtZero: true } }
+            }
+        });
+    </script>
+</body>
+</html>
