@@ -11,17 +11,17 @@ A stock market ETL pipeline with API endpoints and interactive dashboards.
 ## 🔧 Tech Stack
 Python, Jupyter Notebook
 
-PostgreSQL – structured data
+PostgreSQL – storing structured stock price data
 
-MongoDB – scraped company profiles
+MongoDB – storing semi-structured company profiles
 
-Elasticsearch + Kibana – search and visualization
+Elasticsearch + Kibana – indexing data and visualizing trends
 
-FastAPI – REST API for latest stock data
+FastAPI – exposing stock data via a REST API
 
-Streamlit – interactive dashboard
+Streamlit – (optional) interactive dashboard for rapid UI
 
-Windows Task Scheduler – automation
+Windows Task Scheduler – automating daily ETL execution
 
 ## 📂 Project Structure
 ```bash
@@ -49,6 +49,11 @@ Run:
 - `Elasticsearch.py` to index data
 - `fastapi_stock_api.py` to expose an API
 - `streamlit_app.py` for interactive dashboard
+- Kibana dashboard visuals are simulated in:
+
+        dashboards/kibana_simulation.html
+        
+        dashboards/kibana_simulation.py
 
 ## 🧪 Automation
 ETL is scheduled via Windows Task Scheduler for daily runs.
